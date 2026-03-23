@@ -89,3 +89,20 @@ function checkBasic(){
         }
     }
 }
+function showCat(type){
+
+    let items = document.querySelectorAll(".boxP")
+
+    for(let i=0; i<items.length; i++){
+
+        let t = items[i].getAttribute("data-type")
+
+        if(t === type){
+            items[i].style.display = "block"
+        }else{
+            items[i].style.display = "none"
+        }
+
+    }
+
+}

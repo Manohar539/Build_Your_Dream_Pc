@@ -21,14 +21,14 @@
 
         <div class="grid2">
 
-            <div class="boxC">CPU</div>
-            <div class="boxC">GPU</div>
-            <div class="boxC">RAM</div>
-            <div class="boxC">Storage</div>
-            <div class="boxC">Motherboard</div>
-            <div class="boxC">PSU</div>
-            <div class="boxC">Case</div>
-            <div class="boxC">Cooling</div>
+            <div class="boxC" onclick="showCat('cpu')">CPU</div>
+            <div class="boxC" onclick="showCat('gpu')">GPU</div>
+            <div class="boxC" onclick="showCat('ram')">RAM</div>
+            <div class="boxC" onclick="showCat('storage')">Storage</div>
+            <div class="boxC" onclick="showCat('motherboard')">Motherboard</div>
+            <div class="boxC" onclick="showCat('psu')">PSU</div>
+            <div class="boxC" onclick="showCat('case')">Case</div>
+            <div class="boxC" onclick="showCat('cooling')">Cooling</div>
 
         </div>
 
@@ -36,7 +36,7 @@
 
             {% for c in components %}
             
-            <div class="boxP">
+            <div class="boxP" data-type="{{ c.category }}">
 
                 <h3>{{ c.title }}</h3>
                 <p>₹{{ c.price }}</p>

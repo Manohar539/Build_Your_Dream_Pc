@@ -1,14 +1,49 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>B_Y_P | Home</title>
+    <title>B_Y_P</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
+
 <body>
 
-    <h1>Welcome to B_Y_P 🚀</h1>
-    <p>Build Your Dream PC</p>
+<div class="nav1">
+    <div class="txt1">B_Y_P</div>
+    <div>Build Your Dream PC</div>
+</div>
 
-    <a href="/builder/">Go to Builder</a>
+<div class="box1">
+    <h1>Create Your Setup</h1>
+    <p>Select your usage type</p>
+</div>
+
+<div class="grid1">
+
+    <div class="box2" onclick="goB('gaming')">
+        🎮 Gaming
+    </div>
+
+    <div class="box2" onclick="goB('students')">
+        📚 Students
+    </div>
+
+    <div class="box2" onclick="goB('it')">
+        💻 IT
+    </div>
+
+    <div class="box2" onclick="goB('creators')">
+        🎬 Creators
+    </div>
+
+</div>
+
+<script>
+function goB(type){
+    window.location.href = "/builder/?type=" + type;
+}
+</script>
 
 </body>
 </html>

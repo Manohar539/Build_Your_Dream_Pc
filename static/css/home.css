@@ -1,0 +1,62 @@
+/* BASIC */
+
+body{
+margin:0;
+font-family:Arial;
+background:#0b1220;
+color:white;
+}
+
+/* NAV */
+
+.nav1{
+display:flex;
+justify-content:space-between;
+padding:20px 40px;
+background:#020617;
+}
+
+.txt1{
+font-weight:bold;
+font-size:22px;
+}
+
+/* HERO */
+
+.box1{
+text-align:center;
+padding:80px 20px;
+}
+
+.box1 h1{
+font-size:40px;
+}
+
+.box1 p{
+opacity:0.8;
+}
+
+/* GRID */
+
+.grid1{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+padding:40px;
+}
+
+.box2{
+background:#1e293b;
+padding:30px;
+border-radius:10px;
+cursor:pointer;
+width:200px;
+text-align:center;
+transition:0.3s;
+}
+
+.box2:hover{
+background:#2563eb;
+transform:scale(1.05);
+}

@@ -1,4 +1,4 @@
-/* BASIC */
+/* BODY */
 
 body{
 margin:0;
@@ -11,9 +11,10 @@ color:white;
 
 .nav1{
 display:flex;
-justify-content:space-between;
+align-items:center;
+justify-content:space-between;   /* ⭐ THIS FIXES IT */
 padding:20px 40px;
-background:#020617;
+background:#081021;
 }
 
 .txt1{
@@ -24,39 +25,72 @@ font-size:22px;
 /* HERO */
 
 .box1{
+height:420px;
+
+background-image:url('/static/images/pc.jpg');
+background-size:cover;
+background-position:center;
+
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+
 text-align:center;
-padding:80px 20px;
+
+position:relative;
+}
+
+.box1::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(0,0,0,0.45);
 }
 
 .box1 h1{
-font-size:40px;
+font-size:42px;
+margin-bottom:10px;
+z-index:1;
 }
 
 .box1 p{
-opacity:0.8;
+opacity:0.9;
+z-index:1;
 }
 
 /* GRID */
 
 .grid1{
-display:flex;
-justify-content:center;
+background:#f3f4f6;
+color:black;
+padding:60px 40px;
+text-align:center;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:repeat(4,1fr);
 gap:25px;
-flex-wrap:wrap;
-padding:40px;
+margin-top:30px;
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
 }
 
 .box2{
-background:#1e293b;
-padding:30px;
+background:white;
+padding:25px;
 border-radius:10px;
 cursor:pointer;
-width:200px;
-text-align:center;
-transition:0.3s;
+transition:0.25s;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
 .box2:hover{
-background:#2563eb;
-transform:scale(1.05);
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }

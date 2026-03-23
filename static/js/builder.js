@@ -2,29 +2,35 @@
 let dataBox = {}
 let totalVal = 0
 
+function addItem(type, name, price, power, socket){
 
-function addItem(type, name, price){
-
-    // remove old if exists
+    // remove old
     if(dataBox[type]){
         totalVal -= dataBox[type].price
     }
 
-    // store new
+    // store
     dataBox[type] = {
-    name: name,
-    price: parseFloat(price),
-    power: 0,      // placeholder (we extend later)
-    socket: ""     // placeholder
-}
+        name: name,
+        price: parseFloat(price),
+        power: parseInt(power || 0),
+        socket: socket || ""
+    }
 
     // update UI
     document.getElementById(type).innerText = name
 
-    // update total
-    totalVal += parseFloat(price)
+    // update total (UI only)
+    totalVal = 0
+    for(let key in dataBox){
+        totalVal += dataBox[key].price
+    }
+
     document.getElementById("total").innerText = totalVal
 }
+
+
+// CSRF TOKEN
 function getToken(name) {
     let val = null
     if (document.cookie && document.cookie !== '') {
@@ -41,6 +47,7 @@ function getToken(name) {
 }
 
 
+// SAVE BUILD → BACKEND
 function saveBuild(){
 
     if(Object.keys(dataBox).length === 0){
@@ -58,37 +65,18 @@ function saveBuild(){
     })
     .then(res => res.json())
     .then(data => {
+
+        // ✅ SHOW BACKEND RESULTS (IMPORTANT)
+        document.getElementById("power").innerText = data.power
+        document.getElementById("compat").innerText = data.compatibility
+        document.getElementById("perf").innerText = data.performance
+
         alert("Build saved!")
     })
 }
-// simple power calc (new style)
-function calcPower(){
-    let p = 0
-
-    for(let key in dataBox){
-        if(dataBox[key].power){
-            p += parseInt(dataBox[key].power)
-        }
-    }
-
-    return p
-}
 
 
-// basic compatibility check (simplified)
-function checkBasic(){
-
-    if(dataBox["cpu"] && dataBox["motherboard"]){
-
-        if(dataBox["cpu"].socket && dataBox["motherboard"].socket){
-
-            if(dataBox["cpu"].socket !== dataBox["motherboard"].socket){
-                alert("CPU and Motherboard not compatible")
-            }
-
-        }
-    }
-}
+// CATEGORY FILTER
 function showCat(type){
 
     let items = document.querySelectorAll(".boxP")

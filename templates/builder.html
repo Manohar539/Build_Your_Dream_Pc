@@ -42,8 +42,15 @@
                 <p>₹{{ c.price }}</p>
 
                 <button class="btn1"
-                    onclick="addItem('{{ c.category }}','{{ c.title }}','{{ c.price }}')">
-                        Add
+                    onclick="addItem(
+                                    '{{ c.category }}',
+                                    '{{ c.title }}',
+                                    '{{ c.price }}',
+                                    '{{ c.power_draw }}',
+                                    '{{ c.socket_type }}'
+                                    )">
+                        ADD
+                    
                     </button>
 
             </div>
@@ -71,6 +78,7 @@
     <hr>
 
     <p>Total: ₹<span id="total">0</span></p>
+    <p>Power: <span id="power">0</span> W</p>
 
     <button class="btn1" onclick="saveBuild()">Save Build</button>
 

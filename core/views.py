@@ -11,6 +11,12 @@ import json
 
 from .models import Component, Build, Order, Profile
 
+# ✅ IMPORT YOUR LIBRARY (ALL MODULES USED)
+from BYP_lib.power import calculate_power
+from BYP_lib.compatibility import check_compatibility
+from BYP_lib.performance import calculate_performance
+from BYP_lib.pricing import calculate_total
+
 
 # ---------------------------
 # HOME
@@ -53,10 +59,32 @@ def save_configuration(request):
     def extract(part):
         return payload.get(part, {}).get("name", "")
 
-    total = 0
-    for part in payload.values():
-        total += int(part.get("price", 0))
+    # ---------------------------
+    # ✅ USE LIBRARY FOR ALL LOGIC
+    # ---------------------------
+    try:
+        total = calculate_total(payload)
+    except:
+        total = 0
 
+    try:
+        total_power = calculate_power(payload)
+    except:
+        total_power = 0
+
+    try:
+        compatibility_status = check_compatibility(payload)
+    except:
+        compatibility_status = "unknown"
+
+    try:
+        performance_score = calculate_performance(payload)
+    except:
+        performance_score = 0
+
+    # ---------------------------
+    # SAVE BUILD
+    # ---------------------------
     Build.objects.create(
         owner=request.user,
         cpu=extract("cpu"),
@@ -70,7 +98,16 @@ def save_configuration(request):
         total_price=total
     )
 
-    return JsonResponse({"status": "saved"})
+    # ---------------------------
+    # RETURN RESPONSE
+    # ---------------------------
+    return JsonResponse({
+        "status": "saved",
+        "total": total,
+        "power": total_power,
+        "compatibility": compatibility_status,
+        "performance": performance_score
+    })
 
 
 # ---------------------------
@@ -228,7 +265,7 @@ def user_login(request):
 
         if user:
             login(request, user)
-            return redirect("home")
+            return redirect(request.META.get("HTTP_REFERER", "/"))
 
         else:
             messages.error(request, "Invalid credentials")

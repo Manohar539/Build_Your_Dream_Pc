@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Builder</title>
+    <link rel="stylesheet" href="{% static 'css/builder.css' %}">
+</head>
+
+<body>
+
+<div class="top1">
+    <h1>B_Y_P Builder</h1>
+    <p>Type: {{ usecase }}</p>
+</div>
+
+<div class="wrap1">
+
+    <!-- LEFT SIDE -->
+    <div class="boxL">
+
+        <div class="grid2">
+
+            <div class="boxC">CPU</div>
+            <div class="boxC">GPU</div>
+            <div class="boxC">RAM</div>
+            <div class="boxC">Storage</div>
+            <div class="boxC">Motherboard</div>
+            <div class="boxC">PSU</div>
+            <div class="boxC">Case</div>
+            <div class="boxC">Cooling</div>
+
+        </div>
+
+        <div class="grid3">
+
+            {% for c in components %}
+            <div class="boxP">
+
+                <h3>{{ c.title }}</h3>
+                <p>₹{{ c.price }}</p>
+
+                <button class="btn1">Add</button>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="boxR">
+
+        <h3>Your Build</h3>
+
+        <p>CPU: -</p>
+        <p>GPU: -</p>
+        <p>RAM: -</p>
+        <p>Storage: -</p>
+        <p>Motherboard: -</p>
+        <p>PSU: -</p>
+        <p>Case: -</p>
+        <p>Cooling: -</p>
+
+        <hr>
+
+        <p>Total: ₹0</p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

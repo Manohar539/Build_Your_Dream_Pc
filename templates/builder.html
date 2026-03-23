@@ -35,12 +35,16 @@
         <div class="grid3">
 
             {% for c in components %}
+            <p>TEST</p>
             <div class="boxP">
 
                 <h3>{{ c.title }}</h3>
                 <p>₹{{ c.price }}</p>
 
-                <button class="btn1">Add</button>
+                <button class="btn1"
+                    onclick="addItem('{{ c.category }}','{{ c.title }}','{{ c.price }}')">
+                        Add
+                    </button>
 
             </div>
             {% endfor %}
@@ -51,18 +55,24 @@
 
 
     <!-- RIGHT SIDE -->
+     <button class="btn1" onclick="saveBuild()">Save Build</button>
     <div class="boxR">
 
         <h3>Your Build</h3>
 
-        <p>CPU: -</p>
-        <p>GPU: -</p>
-        <p>RAM: -</p>
-        <p>Storage: -</p>
-        <p>Motherboard: -</p>
-        <p>PSU: -</p>
-        <p>Case: -</p>
-        <p>Cooling: -</p>
+        <p>CPU: <span id="cpu">-</span></p>
+        <p>GPU: <span id="gpu">-</span></p>
+        <p>RAM: <span id="ram">-</span></p>
+        <p>Storage: <span id="storage">-</span></p>
+        <p>Motherboard: <span id="motherboard">-</span></p>
+        <p>PSU: <span id="psu">-</span></p>
+        <p>Case: <span id="case">-</span></p>
+
+        <p>Cooling: <span id="cooling">-</span></p>
+
+<hr>
+
+<p>Total: ₹<span id="total">0</span></p>
 
         <hr>
 
@@ -71,6 +81,6 @@
     </div>
 
 </div>
-
+<script src="{% static 'js/builder.js' %}"></script>
 </body>
 </html>

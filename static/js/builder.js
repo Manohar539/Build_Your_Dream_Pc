@@ -12,9 +12,11 @@ function addItem(type, name, price){
 
     // store new
     dataBox[type] = {
-        name: name,
-        price: parseFloat(price)
-    }
+    name: name,
+    price: parseFloat(price),
+    power: 0,      // placeholder (we extend later)
+    socket: ""     // placeholder
+}
 
     // update UI
     document.getElementById(type).innerText = name
@@ -58,4 +60,32 @@ function saveBuild(){
     .then(data => {
         alert("Build saved!")
     })
+}
+// simple power calc (new style)
+function calcPower(){
+    let p = 0
+
+    for(let key in dataBox){
+        if(dataBox[key].power){
+            p += parseInt(dataBox[key].power)
+        }
+    }
+
+    return p
+}
+
+
+// basic compatibility check (simplified)
+function checkBasic(){
+
+    if(dataBox["cpu"] && dataBox["motherboard"]){
+
+        if(dataBox["cpu"].socket && dataBox["motherboard"].socket){
+
+            if(dataBox["cpu"].socket !== dataBox["motherboard"].socket){
+                alert("CPU and Motherboard not compatible")
+            }
+
+        }
+    }
 }

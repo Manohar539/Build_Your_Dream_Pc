@@ -221,23 +221,19 @@ def user_login(request):
 
     if request.method == "POST":
 
-        user = authenticate(
-            request,
-            username=request.POST.get("username"),
-            password=request.POST.get("password")
-        )
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
-
-            if user.is_staff:
-                return redirect("admin_dashboard")
-
             return redirect("home")
 
-        messages.error(request, "Invalid credentials")
+        else:
+            messages.error(request, "Invalid credentials")
 
-    return redirect("home")
+    return render(request, "registration/login.html")
 
 
 def user_logout(request):

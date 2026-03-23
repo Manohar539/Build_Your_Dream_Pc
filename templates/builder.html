@@ -35,7 +35,7 @@
         <div class="grid3">
 
             {% for c in components %}
-            <p>TEST</p>
+            
             <div class="boxP">
 
                 <h3>{{ c.title }}</h3>
@@ -55,32 +55,27 @@
 
 
     <!-- RIGHT SIDE -->
-     <button class="btn1" onclick="saveBuild()">Save Build</button>
-    <div class="boxR">
+     <div class="boxR">
 
-        <h3>Your Build</h3>
+    <h3>Your Build</h3>
 
-        <p>CPU: <span id="cpu">-</span></p>
-        <p>GPU: <span id="gpu">-</span></p>
-        <p>RAM: <span id="ram">-</span></p>
-        <p>Storage: <span id="storage">-</span></p>
-        <p>Motherboard: <span id="motherboard">-</span></p>
-        <p>PSU: <span id="psu">-</span></p>
-        <p>Case: <span id="case">-</span></p>
+    <p>CPU: <span id="cpu">-</span></p>
+    <p>GPU: <span id="gpu">-</span></p>
+    <p>RAM: <span id="ram">-</span></p>
+    <p>Storage: <span id="storage">-</span></p>
+    <p>Motherboard: <span id="motherboard">-</span></p>
+    <p>PSU: <span id="psu">-</span></p>
+    <p>Case: <span id="case">-</span></p>
+    <p>Cooling: <span id="cooling">-</span></p>
 
-        <p>Cooling: <span id="cooling">-</span></p>
+    <hr>
 
-<hr>
+    <p>Total: ₹<span id="total">0</span></p>
 
-<p>Total: ₹<span id="total">0</span></p>
-
-        <hr>
-
-        <p>Total: ₹0</p>
-
-    </div>
+    <button class="btn1" onclick="saveBuild()">Save Build</button>
 
 </div>
+
 <script src="{% static 'js/builder.js' %}"></script>
 </body>
 </html>
